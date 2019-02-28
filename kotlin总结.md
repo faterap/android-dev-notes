@@ -7,7 +7,7 @@
 - 原理：编译器把实现内联函数的字节码动态插入到每次的调用点
 
 ### noinline:
-- 如果你只想被（作为参数）传给一个内联函数的 lamda 表达式中只有一些被内联，你可以用 noinline 修饰符标记一些函数参数
+- 如果你只想被（作为参数）传给一个内联函数的 lamda 表达式中只有一些进行内联，你可以用 noinline 修饰符标记一些函数参数
 - 让内联函数的lambda参数不进行内联，保留一般函数的特征。
 
 `inline fun foo(inlined: () -> Unit, noinline notInlined: () -> Unit) {`
@@ -107,6 +107,14 @@ fun postItem(item: Item) {
  * | _Cancelling_ (transient state)   | `false`    | `false`       | `true`        |
  * | _Cancelled_ (final state)        | `false`    | `true`        | `true`        |
  * | _Completed_ (final state)        | `false`    | `true`        | `false`       |
+
+#### 取消与异常：
+- 一个协程在没有任何理由的情况下使用`Job.cancel`取消的时候，它会被终止，但是它不会取消它的父协程。 无理由取消是父协程取消其子协程而非取消其自身的机制。
+- 如果协程遇到除`CancellationException`以外的异常，它将取消具有该异常的父协程。 所有的子协程被终止的时候，原本的异常被父协程所处理。
+
+#### 监督(Supervisor)
+- `SupervisorJob`中的异常和失败时独立的，也就是说，子协程发生异常或者取消不会导致`SupervisorJob`失败，同时也不会影响其他子协程。
+- `SupervisorJob`可以被用于这些目的。它类似于常规的`Job`，唯一的取消异常将只会**向下传播**
 
 ### 使用注意事项：
 1. 避免使用`GlobalScope`
@@ -244,3 +252,5 @@ fun main() {
 - [协程原理解析](https://www.jianshu.com/p/2659bbe0df16)
 - [Coroutine recipes](https://proandroiddev.com/android-coroutine-recipes-33467a4302e9)
 - [Coroutine patterns & anti patterns](https://proandroiddev.com/kotlin-coroutines-patterns-anti-patterns-f9d12984c68e)
+- [解密 CoroutineContext](https://proandroiddev.com/demystifying-coroutinecontext-1ce5b68407ad)
+
