@@ -253,4 +253,4 @@ fun main() {
 - [Coroutine recipes](https://proandroiddev.com/android-coroutine-recipes-33467a4302e9)
 - [Coroutine patterns & anti patterns](https://proandroiddev.com/kotlin-coroutines-patterns-anti-patterns-f9d12984c68e)
 - [解密 CoroutineContext](https://proandroiddev.com/demystifying-coroutinecontext-1ce5b68407ad)
-
+- [协程实战运用（移除回调陷阱）](https://medium.com/@andrea.bresolin/playing-with-kotlin-in-android-coroutines-and-how-to-get-rid-of-the-callback-hell-a96e817c108b)
