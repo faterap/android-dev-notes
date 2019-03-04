@@ -85,7 +85,7 @@ fun postItem(item: Item) {
 `CoroutineBuilder`
 `CoroutineScope.launch`函数属于协程构建器 `Coroutine builders`，`Kotlin` 中还有其他几种 Builders，负责创建协程:
 - `CoroutineScope.launch {}`: 不阻塞当前线程，在后台创建一个新协程
-- `runBlocking {}`: 创建一个新的协程同时阻塞当前线程，直到协程结束.。主要作用为桥接普通阻塞代码和挂起代码的非阻塞代码。
+- `runBlocking {}`: 创建一个新的协程，同时**与其子协程共同阻塞**当前线程，直到协程结束.。主要作用为桥接普通阻塞代码和挂起代码的非阻塞代码。（保活 JVM）
 - `withContext {}`: 不会创建新的协程，在指定协程上运行挂起代码块，并挂起该协程直至代码块运行完成。
 - `async {}`: 创建一个新协程，唯一的区别是它有返回值
 
