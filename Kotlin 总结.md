@@ -247,6 +247,9 @@ fun main() {
 
 正确的方法，应该使用`scope.coroutineContext.cancelChildren()`。
 
+7. 协程构造器
+
+
 协程资料参考：
 - [协程使用背景](https://www.jianshu.com/p/9f720b9ccdea)
 - [协程原理解析](https://www.jianshu.com/p/2659bbe0df16)
