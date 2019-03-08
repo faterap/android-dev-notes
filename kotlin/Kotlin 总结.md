@@ -92,7 +92,7 @@ fun postItem(item: Item) {
 #### 比较：
 - 1`GlobalScope.launch{}`是非阻塞的，`runBlocking{}`是阻塞的，两者都会启动一个协程
 
-`Job`:
+Job:
 -  `Parent Job`对应有多个`Children Job`，取消`Parent Job`会取消所有的`Children Job`
 -  如果执行`Children Job`时发生了异常，`Parent Job`随之取消
 -  `Parent Job`完成时会等待所有`Children Job`完成了，才最终转化成`Completed`状态

@@ -1,2 +1,2 @@
 # android-article
-Summaries in Android development
+Summaries in Android development.

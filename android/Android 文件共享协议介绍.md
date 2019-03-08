@@ -49,7 +49,7 @@
 
 #### 协商流程：
 
-![Alt text](./img/first.gif)
+![Alt text](../)
 
 - 客户端向服务器请求一个`NETBIOS`会话，并且发送它的已编码的`NETBIOS`名字到`SMB`服务器(它们在`139`端口监听连接请求)。服务器接收到`NETBIOS`名字后回复一个`NETBIOS`会话数据报给有效的会话连接。客户端在建立了连接之后才能进入访问。
 - 客户端发送一个`SMB negprot`请求数据报(`negprot`是磋商协议`negotiate protocol`的简写)。客户端列出了它所支持的所有`SMB`协议版本。
