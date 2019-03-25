@@ -45,15 +45,9 @@ Intent.FLAG_ACTIVITY_NEW_TASK是启动模式中最关键的一个Flag，依据�
 
 顾名思义，FLAG_ACTIVITY_CLEAR_TOP的作用清除"包含Activity的task"中位于该Activity实例之上的其他Activity实例。FLAG_ACTIVITY_CLEAR_TOP和FLAG_ACTIVITY_NEW_TASK两者同时使用，就能达到和launchMode="singleTask"一样的效果。
 
-
-
-
-
 ### Intent.FLAG_ACTIVITY_CLEAR_TASK
 
 FLAG_ACTIVITY_CLEAR_TASK的作用包含Activity的task。使用FLAG_ACTIVITY_CLEAR_TASK时，通常会包含FLAG_ACTIVITY_NEW_TASK。这样做的目的是启动Activity时，清除之前已经存在的Activity实例所在的task；这自然也就清除了之前存在的Activity实例。
-
-
 
 ## 启动模式
 
@@ -92,7 +86,11 @@ FLAG_ACTIVITY_CLEAR_TASK的作用包含Activity的task。使用FLAG_ACTIVITY_CLE
 ### singleTask 和 singleInstance 比较：
 
 **相同之处**：任意时刻，最多只允许存在一个实例。
-**不同之处**：(01) singleTask受android:taskAffinity属性的影响，而singleInstance不受android:taskAffinity的影响。 (02) singleTask所在的task中能有其它的Activity，而singleInstance的task中不能有其他Activity。 (03) 当跳转到singleTask类型的Activity，并且该Activity实例已经存在时，会删除该Activity所在task中位于该Activity之上的全部Activity实例；而跳转到singleInstance类型的Activity，并且该Activity已经存在时，不需要删除其他Activity，因为它所在的task只有该Activity唯一一个Activity实例。
+**不同之处**：
+
+1. singleTask受android:taskAffinity属性的影响，而singleInstance不受android:taskAffinity的影响。 
+2. singleTask所在的task中能有其它的Activity，而singleInstance的task中不能有其他Activity。
+3. 当跳转到singleTask类型的Activity，并且该Activity实例已经存在时，会删除该Activity所在task中位于该Activity之上的全部Activity实例；而跳转到singleInstance类型的Activity，并且该Activity已经存在时，不需要删除其他Activity，因为它所在的task只有该Activity唯一一个Activity实例。
 
 ## 注意
 
