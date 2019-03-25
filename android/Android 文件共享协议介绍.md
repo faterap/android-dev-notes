@@ -27,7 +27,7 @@
 
 `SAMBA`通过两个守护进程实现，分别是`smbd`和`nmbd`：
 - `smbd`: 提供了`Samba`的大部分核心功能。包括提供文件和打印机共享，用户验证，提供时间服务。
-  - `nmbd`：处理名称相关的任务，可以理解为`SAMBA`的域名系统（`DNS`）。功能包括对名称广播进行响应，注册`NetBIOS`名称，作为`NBNS`服务器运作，作为主浏览器运行。
+- `nmbd`：处理名称相关的任务，可以理解为`SAMBA`的域名系统（`DNS`）。功能包括对名称广播进行响应，注册`NetBIOS`名称，作为`NBNS`服务器运作，作为主浏览器运行。
 
 #### 工作模式
 
@@ -49,17 +49,17 @@
 
 #### 协商流程：
 
-![Alt text](../)
+![img](https://www.samba.org/cifs/docs/images/img00003.gif)
 
 - 客户端向服务器请求一个`NETBIOS`会话，并且发送它的已编码的`NETBIOS`名字到`SMB`服务器(它们在`139`端口监听连接请求)。服务器接收到`NETBIOS`名字后回复一个`NETBIOS`会话数据报给有效的会话连接。客户端在建立了连接之后才能进入访问。
 - 客户端发送一个`SMB negprot`请求数据报(`negprot`是磋商协议`negotiate protocol`的简写)。客户端列出了它所支持的所有`SMB`协议版本。
 
-![Alt text](./img/second.gif)
+![img](https://www.samba.org/cifs/docs/images/img00004.gif)
 
 - 通过磋商之后，客户端进程向服务器发起一个用户或共享的认证。
 - 这个过程是通过发送`SesssetupX`(`SesssetupX`是会话建立和`Session setup and X`的简称)请求数据报实现的。客户端发送一对登录名/密码或一个简单密码到服务器，然后服务器通过发送一个`SesssetupX`应答数据报来允许或拒绝本次连接。
 
-![Alt text](./img/third.gif)
+![img](https://www.samba.org/cifs/docs/images/img00005.gif)
 
 - 在客户端完成了磋商和认证之后，它会发送一个`TconX`数据报并列出它想访问的特定网络资源的名称，之后服务器会发送一个`TconX`应答数据报以表示此次连接是否接受或拒绝。
 
