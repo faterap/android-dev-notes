@@ -31,11 +31,14 @@ Intent.FLAG_ACTIVITY_NEW_TASK是启动模式中最关键的一个Flag，依据�
 
 注意：
 
-- 设置该`flag`时需要同时设置`taskAffinity`属性，否则将不会生效；
+1. 设置该`flag`时需要同时设置`taskAffinity`属性，否则将不会生效；
 
+2. 设置了该`flag`之后，结果分好几个场景：
 
-
-### Intent.FLAG_ACTIVITY_SINGLE_TOP
+- Activity的taskAffinity属性的Task栈是否存在
+- 如果存在，要看Activity是否存已经存在于该Task
+- 如果已经存在于该taskAffinity的Task，要看其是不是其rootActivity
+- 如果是其rootActivity，还要看启动该Activity的Intent是否跟当前intent相等
 
 它与launchMode="singleTop"具有相同的行为。实际上，的确如此！单独的使用FLAG_ACTIVITY_SINGLE_TOP，就能达到和launchMode="singleTop"一样的效果。
 
