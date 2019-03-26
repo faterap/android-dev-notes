@@ -20,7 +20,7 @@ Activity与Task的吸附关系，也就是该Activity属于哪个Task。一般�
 
 **很少单独使用FLAG_ACTIVITY_NEW_TASK，通常与FLAG_ACTIVITY_CLEAR_TASK或FLAG_ACTIVITY_CLEAR_TOP联合使用。因为单独使用该属性会导致奇怪的现象，通常达不到我们想要的效果。**
 
-Intent.FLAG_ACTIVITY_NEW_TASK是启动模式中最关键的一个Flag，依据该Flag启动模式可以分成两类，设置了该属性的与未设置该属性的，**对于非Activity启动的Activity**（比如Service中启动的Activity）需要显式的设置Intent.FLAG_ACTIVITY_NEW_TASK，而singleTask及singleInstance在AMS中被预处理后，隐形的设置了Intent.FLAG_ACTIVITY_NEW_TASK，而启动模式是standard及singletTop的Activity不会被设置Intent.FLAG_ACTIVITY_NEW_TASK，除非通过显式的intent setFlag进行设置。
+Intent.FLAG_ACTIVITY_NEW_TASK是启动模式中最关键的一个Flag，依据该Flag启动模式可以分成两类，设置了该属性的与未设置该属性的，**对于非Activity启动的Activity**（比如Service中启动的Activity）需要显式的设置Intent.FLAG_ACTIVITY_NEW_TASK，而singleTask及singleInstance在AMS中被预处理后，**隐形的设置了Intent.FLAG_ACTIVITY_NEW_TASK**，而启动模式是standard及singletTop的Activity不会被设置Intent.FLAG_ACTIVITY_NEW_TASK，除非通过显式的intent setFlag进行设置。
 
 ```java
   Intent intent = new Intent(BackGroundService.this, A.class);
@@ -85,9 +85,11 @@ FLAG_ACTIVITY_CLEAR_TASK的作用包含Activity的task。使用FLAG_ACTIVITY_CLE
 
 ### singleTask 和 singleInstance 比较：
 
-**相同之处**：任意时刻，最多只允许存在一个实例。
-**不同之处**：
+**相同之处**：
 
+任意时刻，最多只允许存在一个实例。
+
+**不同之处**：
 1. singleTask受android:taskAffinity属性的影响，而singleInstance不受android:taskAffinity的影响。 
 2. singleTask所在的task中能有其它的Activity，而singleInstance的task中不能有其他Activity。
 3. 当跳转到singleTask类型的Activity，并且该Activity实例已经存在时，会删除该Activity所在task中位于该Activity之上的全部Activity实例；而跳转到singleInstance类型的Activity，并且该Activity已经存在时，不需要删除其他Activity，因为它所在的task只有该Activity唯一一个Activity实例。
@@ -95,3 +97,11 @@ FLAG_ACTIVITY_CLEAR_TASK的作用包含Activity的task。使用FLAG_ACTIVITY_CLE
 ## 注意
 
 **上面的场景仅仅适用于Activity启动Activity，并且采用的都是默认Intent，没有额外添加任何Flag**
+
+
+
+------
+
+[]: http://wangkuiwu.github.io/2014/06/26/IntentFlag/	"Android 之Activity启动模式(二)之 Intent的Flag属性"
+[]: https://juejin.im/post/59b0f25551882538cb1ecae1#heading-1	"Android面试官装逼失败之：Activity的启动模式"
+
