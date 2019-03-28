@@ -1,4 +1,4 @@
-# 内存优化
+# Android 内存优化
 
 ## 背景
 
@@ -17,6 +17,13 @@ Android Dalvik Heap与原生Java一样，将堆的内存空间分为三个区域
 - Handler内存泄露
 - 匿名内部类（匿名内部类会引用外部类，导致无法释放，比如各种回调）
 - 资源使用完未关闭（BraodcastReceiver，ContentObserver，File，Cursor，Stream，Bitmap）
+
+#### 工具使用
+
+- LeakCanary
+- MAT
+
+
 
 ### 图片资源分辨率
 
