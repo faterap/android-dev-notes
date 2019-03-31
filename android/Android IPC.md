@@ -20,13 +20,24 @@
 - **4.单例模式失效**
 - **5.数据传递的对象必须可序列化**
 
-## IPC 方法
+## 种类
 
-- Messenger(基于AIDL的上层封装)
-- AIDL
+- Messenger（基于AIDL的上层封装）
+- AIDL（基于Binder封装）
+- Intent（基于Binder封装）
+- Binder（基于Binder封装）
+- ContentProvider（基于Binder封装）
 
 ### Messenger
 
 - Handler 每次只会处理一个message
 - 无法考虑并发的情况
+- 只能传输 Bundle 支持的数据类型
 
+## 总结
+
+- 只有允许不同应用的客户端用 IPC 方式调用远程方法，并且想要在服务中处理多线程时，才有必要使用 AIDL
+- 如果需要调用远程方法，但不需要处理并发 IPC，就应该通过实现一个 Binder 创建接口
+- 如果您想执行 IPC，但只是传递数据，不涉及方法调用，也不需要高并发，就使用 Messenger 来实现接口
+- 如果需要处理一对多的进程间数据共享（主要是数据的 CRUD），就使用 ContentProvider
+- 如果要实现一对多的并发实时通信，就使用 Socket
