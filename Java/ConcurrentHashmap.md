@@ -1,4 +1,4 @@
-# ConcurrentHashmap
+# ConcurrentHashMap
 
 > HashMap`的线程安全版本，可以用来替换`HashTable`。在hash碰撞过多的情况下会将链表转化成红黑树。1.8版本的`ConcurrentHashMap`的实现与1.7版本有很大的差别，放弃了*段锁*的概念，借鉴了`HashMap`的数据结构：数组＋链表＋红黑树。
 
