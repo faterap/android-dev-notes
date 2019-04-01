@@ -16,7 +16,7 @@ FutureTask则是一个RunnableFuture<V>，而RunnableFuture实现了Runnbale又�
 
 ## AsyncTask
 
-
+FutureTask + Handler
 
 
 

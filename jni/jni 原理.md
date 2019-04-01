@@ -9,7 +9,6 @@
 1. ### 编写 Java 文件中的 native 方法
 
 ```java
-package hackooo;
 public class Test{
         static{
                 System.loadLibrary("bridge");
