@@ -4,9 +4,9 @@
 
 Parcelable方式的实现原理是将一个完整的对象进行分解，而分解后的每一部分都是Intent所支持的数据类型，这样也就实现传递对象的功能了。
 
-### Serializable
+## Serializable
 
-
+Serializable将对象转化为字节流存储在外部设备，**需要时重新生成对象(依靠反射)**，因为使用反射，所以会产生大量的临时变量，从而引起频繁的GC。
 
 ## 异同
 
@@ -23,7 +23,11 @@ Parcelable方式的实现原理是将一个完整的对象进行分解，而分�
 ### 选择原则
 
 - 在使用内存的时候，Parcelable比Serializable性能高，所以推荐使用Parcelable。
-
 - Serializable在序列化的时候会产生大量的临时变量，从而引起频繁的GC。
-
 - Parcelable不能使用在要将数据存储在磁盘上的情况，因为Parcelable不能很好的保证数据的持续性在外界有变化的情况下。尽管Serializable效率低点，但此时还是建议使用Serializable 。
+
+
+
+注意：
+
+- 序列化后的对象和原来的对象equals会相等，但是由于是堆另一个区域，所以地址不相等
