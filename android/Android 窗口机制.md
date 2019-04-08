@@ -7,6 +7,7 @@
 - setContentView() 流程
 - LayoutInflater.inflate() 流程
 - ViewRootImpl 和 WindowManager 之间的关系
+- LayoutParams 是什么
 
 
 

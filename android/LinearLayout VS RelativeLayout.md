@@ -1,2 +1,6 @@
 ## LinearLayout VS RelativeLayout
 
+## 性能差异
+
+我们发现RelativeLayout会根据2次排列的结果对子View各做一次measure。首先RelativeLayout中子View的排列方式是基于彼此的依赖关系，而这个依赖关系可能和Xml布局中View的顺序不同，在确定每个子View的位置的时候，需要先给所有的子View排序一下。又因为RelativeLayout允许ViewB在横向上依赖ViewA，ViewA在纵向上依赖B。**所以需要横向纵向分别进行一次排序测量**。
+
