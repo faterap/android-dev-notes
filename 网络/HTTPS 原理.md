@@ -137,40 +137,20 @@ SSL 的数字签名和上面说到的数字签名基本一致。就是先通过�
 
 ## 一次完整的 HTTPS 的通信步骤
 
-步骤 1：客户端向服务器发送 ClientHello 报文，请求建立 SSL 连接。
+![img](http://img.blog.csdn.net/20160818103824711?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
-ClientHello 报文：
-
-- 客户端支持的 SSL 版本
-- 客户端支持的加密算法
-- 客户端支持的密钥长度
-
-步骤 2：服务器收到客户端的请求后，向客户端发送 ServerHello 报文。
-
-ServerHello 报文：
-
-- 决定使用的 SSL 版本
-- 决定使用的加密算法
-
-步骤 3：服务器继续发送 Certificate 报文，即服务器的数字证书，其中包含服务器的公开密钥。
-
-步骤 4：服务器发送 ServerHelloDone 报文，通知客户端进最初阶段的 SSL 握手协商部分结束。
-
-步骤 5：客户端收到以上所有信息后，发送 ClientKeyExchange 报文作为回应。该报文已使用步骤 3 中的公开密钥加密。其中包含一种称为 Pre-master secret 的随机密码串，用于之后的对称秘钥加密通信。
-
-步骤 6：客户端继续发送 ChangeCipherSpec 报文，该报文告诉服务器，在此之后的通信都会采用步骤 5 中的 Pre-master secret 秘钥加密。
-
-步骤 7：客户端发送 Finished 报文。改报文包含连接至今全部报文的整体校验值。
-
-步骤 8：服务端对客户端报文校验后，同样发送 ChangeCipherSpec 报文，含义与步骤 6 中的相同。
-
-步骤 9：服务端发送 Finished 报文。
-
-步骤 10：服务端和客户端的 Finished 报文交换完毕后，SSL 连接建立完成。从此后开始进行应用层协议的通信，即 HTTP 通信。
-
-步骤 11：HTTP 通信。
-
-步骤 12：客户端发送 close_notify 报文请求断开连接。之后再发送 TCP FIN 报文来关闭 TCP 通信。
+- 步骤 1： 客户端通过发送 Client Hello 报文开始 SSL 通信。报文中包含客户端支持的 SSL 的指定版本、加密组件（Cipher Suite）列表（所使用的*加密算法*及*密钥长度*等）。
+- 步骤 2： 服务器可进行 SSL 通信时，会以 Server Hello 报文作为应答。和客户端一样，在报文中包含 SSL 版本以及加密组件。服务器的加密组件内容是从接收到的客户端加密组件内筛选出来的。
+- 步骤 3： 之后服务器发送 Certificate 报文。报文中包含***公开密钥证书***。
+- 步骤 4： 最后服务器发送 Server Hello Done **报文通知客户端**，最初阶段的*SSL握手协商*部分结束。
+- 步骤 5： SSL 第一次握手结束之后，客户端以 Client Key Exchange 报文作为回应。报文中包含通信加密中使用的一种被称为 Pre-master secret 的随机密码串。该报文已用步骤 3 中的公开密钥进行加密。
+- 步骤 6： 接着客户端继续发送 Change Cipher Spec 报文。该报文会提示服务器，在此报文之后的通信会采用 Pre-master secret 密钥加密。
+- 步骤 7： 客户端发送 Finished 报文。该报文包含连接至今全部报文的整体校验值。这次握手协商是否能够成功，要以服务器是否能够正确解密该报文作为判定标准。
+- 步骤 8： 服务器同样发送 Change Cipher Spec 报文。
+- 步骤 9： 服务器同样发送 Finished 报文。
+- 步骤 10： 服务器和客户端的 Finished 报文交换完毕之后，SSL 连接就算建立完成。当然，通信会受到 SSL 的保护。从此处开始进行应用层协议的通信，即发送 HTTP请求。
+- 步骤 11： 应用层协议通信，即发送 HTTP 响应。
+- 步骤 12： 最后由客户端断开连接。断开连接时，发送 close_notify 报文。上图做了一些省略，这步之后再发送 TCP FIN 报文来关闭与 TCP 的通信。在以上流程中，应用层发送数据时会附加一种叫做 MAC（Message Authentication Code）的报文摘要。MAC 能够查知报文是否遭到篡改，从而保护报文的完整性。
 
 ## HTTPS 性能考虑
 
