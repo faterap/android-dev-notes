@@ -42,8 +42,6 @@ Intent.FLAG_ACTIVITY_NEW_TASK是启动模式中最关键的一个Flag，依据�
 
 它与launchMode="singleTop"具有相同的行为。实际上，的确如此！单独的使用FLAG_ACTIVITY_SINGLE_TOP，就能达到和launchMode="singleTop"一样的效果。
 
-
-
 ### Intent.FLAG_ACTIVITY_CLEAR_TOP
 
 顾名思义，FLAG_ACTIVITY_CLEAR_TOP的作用清除"包含Activity的task"中位于该Activity实例之上的其他Activity实例。FLAG_ACTIVITY_CLEAR_TOP和FLAG_ACTIVITY_NEW_TASK两者同时使用，就能达到和launchMode="singleTask"一样的效果。
@@ -56,33 +54,32 @@ FLAG_ACTIVITY_CLEAR_TASK的作用包含Activity的task。使用FLAG_ACTIVITY_CLE
 
 ### standard
 
-它是默认模式。在该模式下，Activity可以拥有多个实例，并且这些实例既可以位于同一个task，也可以位于不同的task。
+![这里写图片描述](https://img-blog.csdn.net/20170303203558620?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSVRlcm1lbmc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
-![120721093646152](C:\Users\ADMINI~1\AppData\Local\Temp\chrome_drag8408_22453\120721093646152.gif)
+它是默认模式。在该模式下，Activity可以拥有多个实例，并且这些实例既可以位于同一个task，也可以位于不同的task。
 
 ### singleTop
 
+![这里写图片描述](https://img-blog.csdn.net/20170303204628314?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSVRlcm1lbmc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
 该模式下，在同一个task中，如果存在该Activity的实例，并且该Activity实例位于栈顶(即，该Activity位于前端)，则调用startActivity()时，不再创建该Activity的示例；而仅仅只是调用Activity的onNewIntent()。否则的话，则新建该Activity的实例，并将其置于栈顶。
 
-![120721093646153](C:\Users\ADMINI~1\AppData\Local\Temp\chrome_drag8408_15171\120721093646153.gif)
-
 ### singleTask
+
+![这里写图片描述](https://img-blog.csdn.net/20170303205023925?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSVRlcm1lbmc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 > 在singleTask模式下，如果是第一次创建该Activity实例时，则会新建task并将该Activity添加到该task中。否则(该Activity的实例已存在)，则会打开已有的Activity实例，并调用Activity的onNewIntent()方法，而不会新建Activity实例。在任意时刻，最多只会有该一个Activity实例存在。
 
 顾名思义，只容许有一个包含该Activity实例的task存在。
 
-![120721093646154](C:\Users\ADMINI~1\AppData\Local\Temp\chrome_drag8408_28296\120721093646154.gif)
-
 如果要激活的那个Activity在任务栈中存在该实例，则不需要创建，只需要把此Activity放入栈顶，并把该Activity以上的Activity实例都pop。
 
 ### singleInstance
+![singleInstance](https://inthecheesefactory.com/uploads/source/launchMode/singleInstance.jpg)
 
 > 在该模式下，只允许有一个Activity实例。当第一次创建该Activity实例时，会新建一个task，并将该Activity添加到该task中。注意：该task只能容纳该Activity实例，不会再添加其他的Activity实例！如果该Activity实例已经存在于某个task，则直接跳转到该task。
 
 顾名思义，是单一实例的意思，即任意时刻只允许存在唯一的Activity实例，而且该Activity所在的task不能容纳除该Activity之外的其他Activity实例。
-
-![120721093646155](C:\Users\ADMINI~1\AppData\Local\Temp\chrome_drag8408_22609\120721093646155.gif)
 
 如果应用1的任务栈中创建了MainActivity实例，如果应用2也要激活MainActivity，则不需要创建，两应用共享该Activity实例。
 
@@ -107,4 +104,3 @@ FLAG_ACTIVITY_CLEAR_TASK的作用包含Activity的task。使用FLAG_ACTIVITY_CLE
 
 []: http://wangkuiwu.github.io/2014/06/26/IntentFlag/	"Android 之Activity启动模式(二)之 Intent的Flag属性"
 []: https://juejin.im/post/59b0f25551882538cb1ecae1#heading-1	"Android面试官装逼失败之：Activity的启动模式"
-
