@@ -394,8 +394,6 @@ Job:
 
 考虑以下实现方式：
 
-`
-
 ```kotlin
 class MainActivity : AppCompatActivity(), CoroutineScope {
     

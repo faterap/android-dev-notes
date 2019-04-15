@@ -38,10 +38,10 @@ class MainActivity : AppCompatActivity() {
 ### 工作原理：
 
 1. View 接收用户交互请求
-2. View 将请求转交给ViewModel
-3. ViewModel 操作Model数据更新
-4. Model 更新完数据，通知ViewModel数据发生变化
-5. ViewModel 更新View数据
+2. View 将请求转交给 ViewModel
+3. ViewModel 操作 Model 数据更新
+4. Model 更新完数据，通知 ViewModel 数据发生变化
+5. ViewModel 更新 View 数据
 
 ## MVP
 
