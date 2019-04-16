@@ -1,4 +1,4 @@
-# HTTP 原理
+# HTTP 协议
 
 ## 版本差异
 
@@ -84,15 +84,105 @@ HTTP1.x 为了解决效率问题，可能会尽量多的发起并发的请求去
 
 ### 请求报文
 
-由请求方法、请求 URI、协议版本、可选的请求首部字段和内容实体构成的。
+```
+POST /?id=1 HTTP/1.1
+
+Host: echo.paw.cloud
+Content-Type: application/json; charset=utf-8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:53.0) Gecko/20100101 Firefox/53.0
+Connection: close
+Content-Length: 136
+
+{
+  "status": "ok",
+  "extended": true,
+  "results": [
+    {"value": 0, "type": "int64"},
+    {"value": 1.0e+3, "type": "decimal"}
+  ]
+}
+```
+
+1. 起始行
+2. 表头
+3. 内容**（可选）**
+
+`GET`, `HEAD`, `DELETE` `OPTIONS` 这些请求方法不需要请求内容。
+
+
+
+**起始行**
+
+```
+HTTP-message   = start-line    <-- -- 在這!
+                 *( header-field CRLF )
+                 CRLF
+                 [ message-body ]
+```
+
+- HTTP 方法（如 GET, POST, PUT...）
+- 目标 URL
+- HTTP 版本
+
+
+
+**表头**
+
+單個 表頭欄位 (header-field) 的組成 :
+
+- 一個 不區分大小寫的 欄位名稱 (field-name) — — 習慣上仍以首字大寫為主
+- 緊接一個 冒號 (colon ":")
+- 可選的空白 (optional trailing whitespace, OWS)
+- 欄位值 (field-value)
+- 可選的空白 (optional trailing whitespace, OWS)
+
+```
+header-field   = field-name ":" OWS field-value OWS
+```
+
+
 
 
 
 ### 响应报文
 
-响应报文基本上由协议版本、状态码（表示请求成功或失败的数字代码）、用以解释状态码的原因短语、可选的响应首部字段以及实体主体构成。
-
 ```
+HTTP/1.1 200 OK
+
+Content-Type: text/html; charset=utf-8
+Date: Sat, 18 Feb 2017 00:01:57 GMT
+Server: nginx/1.11.8
+transfer-encoding: chunked
+Connection: Close
+
+ <!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>echo</title>
+```
+
+1. 状态行
+
+   - HTTP 协议
+   - 状态码
+   - 状态描述
+
+   例子 `HTTP/1.1 404 Not Found`.
+
+2. 头部
+
+   - General headers
+   - Reponse headers
+   - Entity Headers
+
+3. 内容
+
+
+
+
+
+```html
 HTTP/1.1 200 OK
 Date: Tue, 10 Jul 2012 06:50:15 GMT
 Content-Length: 362
@@ -115,4 +205,8 @@ Content-Type: text/html
 - 路由寻址
 
 
+
+------
+
+[]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP	"HTTP"
 

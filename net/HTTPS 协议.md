@@ -1,4 +1,4 @@
-# HTTPS 原理
+# HTTPS 协议
 
 ## 为什么需要 HTTPS？
 
