@@ -7,6 +7,8 @@
 
 ### Android Memory Profiler
 
+![memory-profiler-callouts_2x](https://developer.android.com/studio/images/profile/memory-profiler-callouts_2x.png)
+
 内存计数中的类别如下所示：
 
 - **Java**：从 Java 或 Kotlin 代码分配的对象内存。
