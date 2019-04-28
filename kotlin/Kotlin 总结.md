@@ -314,6 +314,8 @@ reified:
 
 ### lazy:
 
+在Kotlin中，變數的初始化都必須指定值。我們先前為了避免在使用var宣告變數時就先給定初始值，使用lateinit來應變。而使用`lazy`则可以避免声明`val`变量时就给定初始值，实现「懒加载」。
+
 ```
 `val propLazy: Int by lazy{1}`
 ```
