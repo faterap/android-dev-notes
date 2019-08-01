@@ -1,4 +1,4 @@
-# Kotlin 总结
+#  Kotlin 总结
 
 ## 特性
 
@@ -44,11 +44,11 @@
 
 ## Elvis operator:
 
-`first operand ?: second operand`
-It enables you to write a consise code, and works as such:
-If first operand isn't null, then it will be returned. If it is null, then the second operand will be returned. This can be used to guarantee that an expression won't return a null value, as you'll provide a non-nullable value if the provided value is null.
+```kotlin
+val l = b?.length ?: -1
+```
 
-
+如果 `?:` 左侧表达式非空，elvis 操作符就返回其左侧表达式，否则返回右侧表达式。 请注意，当且仅当左侧为空时，才会对右侧表达式求值。
 
 ## 可见性修饰符
 

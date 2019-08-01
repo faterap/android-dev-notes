@@ -41,7 +41,7 @@ List<Cat> cats = new ArrayList<>();
 List<Animal> animals = cats;
 ```
 
-我们可以说**Java对于数组和普通对象是支持协变的,但是对于带有泛型类型的List则不支持协变** 。
+我们可以说**Java对于数组和普通对象是支持协变的，但是对于带有泛型类型的List则不支持协变** 。
 
 ### Kotlin
 
@@ -61,7 +61,7 @@ Kotlin 中表现有所不一致：
 
 ## 声明处型变
 
-与 Java 有界通配符不能用于泛型声明时使用不同的是，Kotlin 中`out`和`in`两个型变注解还可以用于泛型声明时，更加灵活。下面通过 Java 和 Kotlin 中对 Collection 的定义来分析：
+与 Java 有界通配符不能用于泛型声明，不同的是，Kotlin 中`out`和`in`两个型变注解还可以用于泛型声明时，更加灵活。下面通过 Java 和 Kotlin 中对 Collection 的定义来分析：
 
 ```java
 // Java 中 Collection 的定义，元素是可读写的

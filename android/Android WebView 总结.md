@@ -46,6 +46,12 @@ Android SDK中，android.webkit.WebView实际上是一个ViewGroup，并将后�
 
 回到WebView的情况。当WebView部件发生内容更新时，例如页面加载完毕，CSS动画，或者是滚动、缩放操作导致页面内容更新，同样会在WebView触发invalidate方法，随后在视图系统的统筹安排下，WebView.onDraw方法会被调用，最后实际上调用了AwContents.onDraw方法，它会请求对应的native端对象执行OnDraw方法，将页面的内容更新绘制到WebView对应的Canvas上去。
 
+## 漏洞
+
+1. 本地跨域漏洞
+
+Android WebView存在跨域访问漏洞。该漏洞产生的原因是由于Android应用WebView开启了file域访问，且允许file域访问http域，未对file域的路径做严格限制所致。攻击者可以利用漏洞，远程获取APP中的所有本地敏感数据。
+
 ## 总结
 
 WebView只是一个普通的View部件而已，当页面内容更新时，会触发invalidate，Android视图系统收到失效消息后会要求WebView部件回调onDraw方法重绘自己。WebView重绘过程较为复杂，方法InProcessViewRenderer::OnDraw是理解和分析WebView渲染模型的入口点，Canvas对象的硬件加速属性决定了渲染路径的不同。

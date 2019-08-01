@@ -9,5 +9,3 @@
 ## 深克隆（deep clone）
 
 对基本数据类型进行值传递，对引用数据类型，创建一个新的对象，并复制其内容，此为深拷贝。
-
-![/clone-深.png](http://ww1.sinaimg.cn/large/006tKfTcly1fij5l1dm3uj30fs05i74h.jpg)

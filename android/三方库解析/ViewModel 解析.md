@@ -46,7 +46,7 @@ public class BFragment extends Fragment {
 
 ## 
 
-## ViewMode 本质
+## ViewModel 本质
 
 `ViewModel`层的根本职责，就是负责维护**UI的状态**，追根究底就是维护对应的**数据**——毕竟，无论是MVP还是MVVM，UI的展示就是对数据的渲染。
 
