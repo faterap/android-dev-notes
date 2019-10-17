@@ -9,3 +9,6 @@
 5. 通过apkbuilder工具，将aapt生成的resources.arsc和res文件、assets文件和classes.dex一起打包生成apk
 6. 通过Jarsigner工具，对上面的apk进行debug或release签名
 7. 通过zipalign工具，将签名后的apk进行对齐处理。
+
+[1]: https://juejin.im/entry/5a6ed6836fb9a01ca3258b5f	"3个知识点让你了解Android签名机制"
+
