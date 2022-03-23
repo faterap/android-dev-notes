@@ -1,12 +1,12 @@
-# JNI
+# JNI原理
 
 
 
 ![img](https://www.luoxudong.com/wp-content/uploads/2018/04/20180416110407_51811.png)
 
-## 步骤
+### 1. 步骤
 
-1. ### 编写 Java 文件中的 native 方法
+#### 1.1 编写 Java 文件中的 native 方法
 
 ```java
 public class Test{
@@ -25,7 +25,7 @@ public class Test{
 
 
 
-2. ### 生成JNI调用需要的头文件
+#### 1.2 生成JNI调用需要的头文件
 
 ```shell
 javac hackooo/Test.java 
@@ -60,7 +60,7 @@ JNIEXPORT jint JNICALL Java_hackooo_Test_nativeAdd
 
 
 
-3. ### native 方法的实现
+#### 1.3 native 方法的实现
 
 bridge.c 的实现：
 
@@ -75,7 +75,7 @@ JNIEXPORT jint JNICALL Java_hackooo_Test_nativeAdd
 
 
 
-### 4. 生成动态链接库
+#### 1.5 生成动态链接库
 
 ```shell
 gcc -shared -I /usr/lib/jdk1.6.0_45/include 
@@ -86,24 +86,24 @@ gcc -shared -I /usr/lib/jdk1.6.0_45/include
 
 最后需要注意一点的是 -o 选项，我们在java代码中调用的是System.loadLibrary("xxx"),那么生成的动态链接库的名称就必须是libxxx.so的形式（这里指Linux环境），否则在执行java代码的时候，就会报 java.lang.UnsatisfiedLinkError: no XXX in java.library.path 的错误。
 
-## 源码中的 JNI
+### 2. 源码中的 JNI
 
-### 静态注册
+#### 2.1 静态注册
 
 静态注册的原理是先由JAVA代码编写需要调用的接口什么，然后通过JNI实现这些声明方法。
 比较通用的做法是先创建一个java文件，声明需要使用JNI实现的接口，然后使用javah命令生成对应的C/C++头文件。再一一实现头文件中的函数即可。JAVA层调用JIN函数时，会从对应的JNI文件中查找该函数，因此需要把JAVA层接口和Native函数建立一层关联，静态注册的实现方法就是在Native函数命名上遵守特定的格式，否则就会找不到对应函数而报错。
 
-### 动态注册
+#### 2.2 动态注册
 
 动态注册的原理是在JNI层通过重载JNI_OnLoad()函数来实现。
 针对静态注册的缺点，动态注册方法就可以避免。动态注册的原理是通过RegisterNatives方法把C/C++函数映射到JAVA定义的方法，不需要通过JAVA方法名查找匹配Native函数名，也就不需要遵循静态注册的命名规则。
 
-### JNI注册的两种时机：
+#### 2.3 JNI注册的两种时机：
 
 - Android系统启动过程中Zygote注册，可通过查询AndroidRuntime.cpp中的gRegJNI，看看是否存在对应的register方法；
 - 调用System.loadLibrary()方式注册。
 
-## 实现原理
+### 实现原理
 
 将刚刚的 Java 文件编译成 class 文件：
 
@@ -137,7 +137,7 @@ dlopen相当于打开一个共享库，打开的时候可以使用RTLD_LAZY标�
 总之，System.loadLibrary()的作用就是调用相应库中的JNI_OnLoad() 方法。
 
 
-## 总结
+### 总结
 Java动态装载共享库，靠的是系统的 “dlxxx” 相关的函数实现的。对于装载的共享库，java虚拟机，也会有缓存，在装载共享库的时候，会读取共享库的header，并且解析并保存里面的符号表，当调用native方法的时候，用刚才的例子中提到的方法进行调用。
 
 

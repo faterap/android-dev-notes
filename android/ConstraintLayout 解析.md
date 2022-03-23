@@ -83,3 +83,9 @@ Barrier 是用多个 View 作为限制源来决定自身位置的一种辅助线
 本文我们是以**宽度：高度**进行View比例的设置，当然我们也可以以**高度：宽度**进行设置，道理都是一样的。
 
 设置View的比例也是ConstraintLayout相对于传统的布局容器一个强大的功能，它使得布局更加灵活，更加容易得进行屏幕适配。
+
+
+
+[]: https://constraintlayout.com/basics/create_chains.html	"Chains"
+
+https://juejin.im/post/5bac92f2f265da0aba70c1bf#heading-13

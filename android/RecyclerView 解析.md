@@ -46,3 +46,9 @@
 
 
 ## ItemAnimator
+
+
+
+
+
+[https://duanjobs.github.io/2017/10/18/RecyclerView%E7%9A%84ViewHolder%E5%A4%8D%E7%94%A8%E6%9C%BA%E5%88%B6%E6%80%BB%E7%BB%93/](https://duanjobs.github.io/2017/10/18/RecyclerView的ViewHolder复用机制总结/)

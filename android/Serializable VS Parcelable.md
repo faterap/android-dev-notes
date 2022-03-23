@@ -26,8 +26,6 @@ Serializable将对象转化为字节流存储在外部设备，**需要时重新
 - Serializable在序列化的时候会产生大量的临时变量，从而引起频繁的GC。
 - Parcelable不能使用在要将数据存储在磁盘上的情况，因为Parcelable不能很好的保证数据的持续性在外界有变化的情况下。尽管Serializable效率低点，但此时还是建议使用Serializable 。
 
-
-
 注意：
 
 - 序列化后的对象和原来的对象equals会相等，但是由于是堆另一个区域，所以地址不相等

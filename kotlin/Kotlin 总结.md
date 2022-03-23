@@ -104,7 +104,7 @@ val l = b?.length ?: -1
 
 - `field` 用作[注解使用处目标](https://www.kotlincn.net/docs/reference/annotations.html#%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E5%A4%84%E7%9B%AE%E6%A0%87)
 
-- `file` 用作[注解使用处目标](https://www.kotlincn.net/docs/reference/annotations.html#%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E5%A4%84%E7%9B%AE%E6%A0%87)
+- `file` 用作[注解使用处目标 da](https://www.kotlincn.net/docs/reference/annotations.html#%E6%B3%A8%E8%A7%A3%E4%BD%BF%E7%94%A8%E5%A4%84%E7%9B%AE%E6%A0%87)
 
 - `finally` 开始一个[当 try 块退出时总会执行的块](https://www.kotlincn.net/docs/reference/exceptions.html)
 
@@ -162,6 +162,10 @@ reified:
 原理：
 
 **每次调用带实化类型参数的函数时，编译器都知道此次调用中作为泛型类型实参的具体类型。所以编译器只要在每次调用时生成对应不同类型实参调用的字节码插入到调用点即可。**总之一句话很简单，就是带实化参数的函数每次调用都生成不同类型实参的字节码，动态插入到调用点。由于生成的字节码的类型实参引用了具体的类型，而不是类型参数所以不会存在擦除问题。
+
+[]: https://droidyue.com/blog/2019/07/28/kotlin-reified-generics/	"使用Kotlin Reified 让泛型更简单安全"
+
+
 
 #### infix:
 标有 infix 关键字的函数也可以使用中缀表示法（忽略该调用的点与圆括号）调用。
@@ -536,3 +540,4 @@ fun main() {
 - [Coroutine patterns & anti patterns](https://proandroiddev.com/kotlin-coroutines-patterns-anti-patterns-f9d12984c68e)
 - [解密 CoroutineContext](https://proandroiddev.com/demystifying-coroutinecontext-1ce5b68407ad)
 - [协程实战运用（移除回调陷阱）](https://medium.com/@andrea.bresolin/playing-with-kotlin-in-android-coroutines-and-how-to-get-rid-of-the-callback-hell-a96e817c108b)
+- https://www.bennyhuo.com/2019/10/19/coroutine-why-so-called-lightweight-thread/

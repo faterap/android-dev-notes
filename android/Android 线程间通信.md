@@ -107,3 +107,7 @@ mTraversalRunnable调用了performTraversals执行measure、layout、draw。为�
 - Handler将消息发送到MQ中，Message的target域会引用自己的发送者，Looper从MQ中取出来后，再交给发送这个Message的Handler去处理。
 - Message可以直接添加一个Runnable对象，当这条消息被处理的时候，直接执行Runnable.run()方法。
 
+
+
+https://cloud.tencent.com/developer/article/1767768
+

@@ -9,8 +9,21 @@ Exception 與 Error 都是繼承自 Throwable, 在 Java 的世界裡, 只有 Thr
 
 **再來, Exception 又可以分成兩類:**
 
-- Checked Exception: 又稱受檢例外, 通常在原始碼中必須顯式地 catch 並且處理, 這部分算是 compile time 會檢查的部分.
-- Unchecked Exception: 又稱非受檢例外, 就是所謂的 RuntimeException, 常見的像是 NullPointerException, ArrayIndexOutOfBoundsException. 這種類型的例外通常是可以透過撰寫相應程式以避免的邏輯錯誤, 可以根據當下的情境來判斷是不是要 catch, 且在 compile time 並不會強制要求要 catch.
+- **Checked Exception**: 又稱受檢例外, 通常在原始碼中必須顯式地 catch 並且處理, 這部分算是 compile time 會檢查的部分.
+
+  Java.lang.ClassNotFoundException
+
+  Java.lang.CloneNotSupportedException
+
+  Java.lang.IllegalAccessException
+
+  Java.lang.InterruptedException
+
+  Java.lang.NoSuchFieldException
+
+  Java.lang.NoSuchMetodException
+
+- **Unchecked Exception**: 又稱非受檢例外, 就是所謂的 **RuntimeException**, 常見的像是 NullPointerException, ArrayIndexOutOfBoundsException. 這種類型的例外通常是可以透過撰寫相應程式以避免的邏輯錯誤, 可以根據當下的情境來判斷是不是要 catch, 且在 compile time 並不會強制要求要 catch.
 
 
 

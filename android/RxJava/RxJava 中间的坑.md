@@ -10,3 +10,6 @@
 
 toList() 和 isEmpty() 组合使用时候，并不能判断 list 是否为空。因为 isEmpty() 只是判断有没有发射数据，toList() 之后，被观察者其实发送了 list 一个数据！！！
 
+### 3. 收不到元素
+
+看看是不是autoDispose的锅！！！

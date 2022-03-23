@@ -10,3 +10,19 @@ background 会根据 ImageView 组件给定的长宽进行拉伸, 而 src 就存
 
 ## 2. scaleType
 
+
+
+## 3. colorFilter
+
+
+
+
+
+
+
+[Android ImageView 正确使用姿势](https://cloud.tencent.com/developer/article/1071583)
+
+[ImageView 圖片縮放（ScaleType]](https://myapollo.com.tw/zh-tw/polly-android-image_scale_type/)
+
+
+

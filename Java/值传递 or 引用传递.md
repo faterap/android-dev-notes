@@ -27,3 +27,7 @@ Java和C++的一个不同点是， 在Java中不可能直接操作对象本身�
 
 
 
+https://duanguangguang.github.io/2018/03/16/javaAdvance/java-transmit/
+
+
+

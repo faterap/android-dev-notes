@@ -4,4 +4,5 @@
 
 - BehaviorSubject
 - PublishSubject
+- UnicastSubject
 

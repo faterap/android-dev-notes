@@ -117,7 +117,7 @@ unkownList.add(1);  // warning: Unchecked call to 'add(E)'
 unkownList.add("1"); // warning: Unchecked call to 'add(E)'
 ```
 
-而在 Kotlin 中，在参数类型未知时，可以用星投影来安全的使用泛型：
+z而在 Kotlin 中，在参数类型未知时，可以用星投影来安全的使用泛型：
 
 ```kotlin
 val list = ArrayList<Int>(5)
@@ -161,5 +161,9 @@ unkownList.add("1") // error
 
 ------
 
-[]: http://johnnyshieh.me/posts/kotlin-generic/	"Kotlin 泛型 VS Java 泛型"
+[]: http://johnnyshieh.me/p
+
+osts/kotlin-generic/	"Kotlin 泛型 VS Java 泛型"
+
+https://kaixue.io/kotlin-generics/
 

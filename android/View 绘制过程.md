@@ -1,8 +1,8 @@
-# View 绘制过程
+# View draw过程
 
 ![这里写图片描述](https://img-blog.csdn.net/20150530154328068)
 
-## 步骤
+### 1. 步骤
 
 1. 对View的背景进行绘制 `drawBackground(canvas)`
 2. 保存当前的图层信息(可跳过) 
@@ -11,7 +11,7 @@
 5. 绘制View的褪色的边缘，类似于阴影效果(可跳过) 
 6. 绘制View的装饰（例如：滚动条） `onDrawForeground(canvas)`
 
-## Draw 流程总结：
+### 2. Draw 流程总结：
 
 可以看见，绘制过程就是把View对象绘制到屏幕上，整个draw过程需要注意如下细节：
 
