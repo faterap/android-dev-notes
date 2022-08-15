@@ -34,6 +34,7 @@ Summary:
 - 尽量使用观察者模式
 
 ## Design pattern
+
 - 代理模式
 - 责任链模式
 - 外观模式
@@ -59,11 +60,9 @@ Summary:
 - Navigation
 - Compose
 
-
 ## 协程：
 
 - Flow
-
 
 ## Android能力扩展
 
@@ -72,10 +71,9 @@ Summary:
 - Kotlin进阶
 
 ## 技术栈拓展
+
 - iOS
 - AI
 - python
 - go
 - web 小程序
-
-

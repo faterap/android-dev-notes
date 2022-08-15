@@ -23,9 +23,9 @@ Java和C++的一个不同点是， 在Java中不可能直接操作对象本身�
 
 **如果是对引用类型的数据进行操作，分两种情况，一种是形参和实参保持指向同一个对象地址，则形参的操作，会影响实参指向的对象的内容。一种是形参被改动指向新的对象地址（如重新赋值引用），则形参的操作，不会影响实参指向的对象的内容。**
 
+
+
 []: https://juejin.im/post/5bce68226fb9a05ce46a0476#heading-7
-
-
 
 https://duanguangguang.github.io/2018/03/16/javaAdvance/java-transmit/
 

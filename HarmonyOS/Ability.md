@@ -1,7 +1,5 @@
 # Ability
 
-
-
 ## 1. 概念
 
 ### 1.1 Feature Ability
@@ -10,8 +8,6 @@
   从上面一段文字，去其糟粕，取其精华之后就是两点。**FA（Feature Ability）**和**PA（Particle Ability）**
 
   **FA（Feature Ability）** ，中文意思是功能能力，它支持**Page Ability** 页面能力用于提供与用户交互的能力。一个Page 可以由一个或多个 AbilitySlice 构成，AbilitySlice 是指应用的单个页面及其控制逻辑的总和。
-
-
 
 ### 1.2 Page Ability
 
@@ -30,13 +26,4 @@
 
   数据的存放形式多样，可以是数据库，也可以是磁盘上的文件。Data 对外提供对数据的增、删、改、查，以及打开文件等接口，这些接口的具体实现由开发者提供。说起来和Android的ContentProvider有些像。
 
-
-
-
-
-
-
-
-
 https://aijishu.com/a/1060000000139663#item-1-3
-
